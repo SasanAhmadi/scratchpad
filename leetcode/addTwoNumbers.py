@@ -8,47 +8,26 @@ class ListNode:
         self.val = val
         self.next = next
 
-
 class Solution:
-    def calc_sum_remainder(self, l1, l2, carryon):
-        n1 = 0
-        n2 = 0
-        if l1:
-            n1 = l1.val
-        if l2:
-            n2 = l2.val
-
-        sum_current = n1 + n2 + carryon
-        if sum_current > 9:
-            sum_current = sum_current - 10
-            carryon = 1
-        else:
-            carryon = 0
-
-        return sum_current, carryon
 
     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
         carryon = 0
-        cl1 = l1
-        cl2 = l2
+        tempHead = ListNode(0)
+        current = tempHead
+        while l1 or l2 or carryon:
+            l1_val = l1.val if l1 else 0
+            l2_val = l2.val if l2 else 0
 
-        master_node = None
-        while cl1 or cl2:
-            current, carryon = self.calc_sum_remainder(cl1, cl2, carryon)
-            cl1 = cl1.next if cl1 else None
-            cl2 = cl2.next if cl2 else None
-            if not master_node:
-                master_node = ListNode(current)
-                node = master_node
-            else:
-                node.next = ListNode(current)
-                node = node.next
+            sumColumn = l1_val + l2_val + carryon
+            carryon = sumColumn // 10
 
-            if not cl1 and not cl2:
-                if carryon > 0:
-                    node.next = ListNode(carryon)
+            current.next = ListNode(sumColumn % 10)
+            current = current.next
 
-        return master_node
+            l1 = l1.next if l1 else None
+            l2 = l2.next if l2 else None
+
+        return tempHead.next
 
 
 l1 = ListNode(2)
