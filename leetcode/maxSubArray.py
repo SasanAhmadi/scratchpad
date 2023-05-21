@@ -4,13 +4,11 @@ import math
 
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
-        result = -math.inf
-        for i in range(len(nums)):
-            current_sum = 0
-            for j in range(i, len(nums)):
-                current_sum += nums[j]
-                result = max(result, current_sum)
+        current_sub_array = result = nums[0]
 
+        for i in nums[1:]:
+            current_sub_array = max(i, current_sub_array + i)
+            result = max(result, current_sub_array)
         return result
 
 
