@@ -20,14 +20,14 @@ m = 3
 n = 3
 nums2 = [1,2,3]
 Solution().merge(nums1=nums1, m=m, n=n, nums2=nums2)
-assert nums1 == [1,2,3,4,5,6]            
+assert nums1 == [1,2,3,4,5,6]
 
 nums1 = [1,2,3,4,0,0,0]
 m = 4
 n = 3
 nums2 = [4,5,6]
 Solution().merge(nums1=nums1, m=m, n=n, nums2=nums2)
-assert nums1 == [1,2,3,4,4,5,6]    
+assert nums1 == [1,2,3,4,4,5,6]
 
 nums1 = [-1,0,2,3,4,7,0,0,0,0,0]
 m = 6
@@ -37,7 +37,7 @@ Solution().merge(nums1=nums1, m=m, n=n, nums2=nums2)
 assert nums1 == [-1,0,1,2,2,3,3,4,5,6,7]
 
 nums1 = [1,2,3,0,0,0]
-m = 3 
+m = 3
 n = 3
 nums2 = [2,5,6]
 Solution().merge(nums1=nums1, m=m, n=n, nums2=nums2)
