@@ -2,14 +2,14 @@ class Solution:
     def isMatch(self, s: str, p: str) -> bool:
         if not 1 <= len(s) <= 20:
             return False
-        if not 1 <= len(p) <= 30:
+        if not 1 <= len(p) <= 20:
             return False
         if s.lower() != s:
             return False
         input = p.replace('.', '').replace('*', '')
         if not (input.isalpha() and input.lower() == input or input == ''):
             return False
-        
+
         return self._match(s, p)
 
     def _match(self, s: str, p: str) -> bool:
@@ -22,10 +22,9 @@ class Solution:
                     first_match and self._match(s[1:], p))
         else:
             return first_match and self._match(s[1:], p[1:])
-        
+
 if __name__ == '__main__':
     sol = Solution()
     assert sol.isMatch(s = "aa", p = "a") == False
     assert sol.isMatch(s = "aa", p = "a*") == True
     assert sol.isMatch(s = "ab", p = ".*") == True
-        
